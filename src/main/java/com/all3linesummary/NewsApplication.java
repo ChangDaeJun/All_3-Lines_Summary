@@ -1,4 +1,4 @@
-package com.all3linesummary.news;
+package com.all3linesummary;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
