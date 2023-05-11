@@ -1,4 +1,4 @@
-package com.all3linesummary.news.newsCollector;
+package com.all3linesummary.summary;
 
 import com.all3linesummary.news.dto.NewsDTO;
 

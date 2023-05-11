@@ -5,7 +5,7 @@ import com.all3linesummary.news.entity.News;
 import com.all3linesummary.news.entity.NewsImage;
 import com.all3linesummary.news.newsCollector.CollectNews;
 import com.all3linesummary.news.newsCollector.SelectNews;
-import com.all3linesummary.news.newsCollector.SummaryService;
+import com.all3linesummary.summary.SummaryService;
 import lombok.AllArgsConstructor;
 import org.json.JSONArray;
 import org.springframework.stereotype.Component;
