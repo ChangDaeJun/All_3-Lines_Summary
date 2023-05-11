@@ -55,7 +55,9 @@ public class SearchNewsServiceImpl implements SearchNewsService {
             conn.setRequestProperty("X-Naver-Client-Secret", secret);
 
             int responseCode = conn.getResponseCode();
+            String message = conn.getResponseMessage();
             if(responseCode != 200){
+                System.out.println(message);
                 System.out.println(responseCode + " error ");
             }
             else{
