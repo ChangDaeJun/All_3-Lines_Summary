@@ -1,7 +1,9 @@
 package com.all3linesummary.summary;
 
-import com.all3linesummary.news.dto.NewsDTO;
+
+import com.all3linesummary.summary.dto.Document;
+import com.all3linesummary.summary.dto.Option;
 
 public interface SummaryService {
-    String summary(String title, String text);
+    String summary(Document document, Option option);
 }

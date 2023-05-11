@@ -42,7 +42,7 @@ public class CollectTodayNewsSchedule {
         int min = Math.min(newsRanking.size(), 1000);
         for(int i = 0; i < min; i++){
             NewsDTO news = newsRanking.poll();
-            String summary = summaryService.summary(news.getNews().getTitle(), news.getNews().getText());
+            String summary = "";//summaryService.summary(news.getNews().getTitle(), news.getNews().getText());
             news.getNews().setSummary(summary);
             saveNews(news);
         }
