@@ -15,7 +15,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 @Component
-public class CollectNewsServiceImpl implements CollectNewsService {
+public class SearchNewsServiceImpl implements SearchNewsService {
     @Value("${naver.api.searchAPI}")
     private String url;
     @Value("${naver.api.id}")

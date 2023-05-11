@@ -3,7 +3,7 @@ package com.all3linesummary.news;
 import com.all3linesummary.news.dto.NewsGetResult;
 import com.all3linesummary.domain.News;
 import com.all3linesummary.domain.NewsImage;
-import com.all3linesummary.naverAPIs.searchNews.CollectNewsService;
+import com.all3linesummary.naverAPIs.searchNews.SearchNewsService;
 import com.all3linesummary.algorithm.selectNews.SelectNews;
 import com.all3linesummary.naverAPIs.summary.SummaryService;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.PriorityQueue;
 public class CollectTodayNewsSchedule {
     private final NewsImageRepository newsImageRepository;
     private final NewsRepository newsRepository;
-    private final CollectNewsService collectNewsService;
+    private final SearchNewsService searchNewsService;
     private final SelectNews selectNews;
     private final SummaryService summaryService;
 
@@ -32,7 +32,7 @@ public class CollectTodayNewsSchedule {
         });
 
         for(int i = 1; i <= 1; i++){
-            JSONArray news = collectNewsService.get(100, i);
+            JSONArray news = searchNewsService.get(100, i);
             List<NewsGetResult> selectedNews = selectNews.select(news);
             for(NewsGetResult newsGetResult : selectedNews){
                 newsRanking.add(newsGetResult);
