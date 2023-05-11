@@ -1,8 +1,8 @@
-package com.all3linesummary.summary;
+package com.all3linesummary.naverAPIs.summary;
 
-import com.all3linesummary.summary.dto.Document;
-import com.all3linesummary.summary.dto.Option;
-import com.all3linesummary.summary.dto.SummaryRequest;
+import com.all3linesummary.naverAPIs.summary.dto.Document;
+import com.all3linesummary.naverAPIs.summary.dto.Option;
+import com.all3linesummary.naverAPIs.summary.dto.SummaryRequest;
 import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;

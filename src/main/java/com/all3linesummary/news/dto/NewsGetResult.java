@@ -1,6 +1,6 @@
 package com.all3linesummary.news.dto;
 
-import com.all3linesummary.news.entity.News;
+import com.all3linesummary.domain.News;
 import lombok.Getter;
 import lombok.Setter;
 import org.jsoup.nodes.Element;
@@ -11,12 +11,12 @@ import java.util.List;
 
 @Getter
 @Setter
-public class NewsDTO{
+public class NewsGetResult {
     private News news;
     private List<String> images;
     private int weight;
 
-    public NewsDTO(News news, Elements images) {
+    public NewsGetResult(News news, Elements images) {
         this.news = news;
         this.images = new ArrayList<>();
         for (Element image : images) {

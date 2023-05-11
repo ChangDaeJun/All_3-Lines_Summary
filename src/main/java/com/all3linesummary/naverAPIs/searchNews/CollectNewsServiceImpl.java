@@ -1,10 +1,9 @@
-package com.all3linesummary.news.newsCollector;
+package com.all3linesummary.naverAPIs.searchNews;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -16,7 +15,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 @Component
-public class CollectNewsImpl implements CollectNews{
+public class CollectNewsServiceImpl implements CollectNewsService {
     @Value("${naver.api.searchAPI}")
     private String url;
     @Value("${naver.api.id}")

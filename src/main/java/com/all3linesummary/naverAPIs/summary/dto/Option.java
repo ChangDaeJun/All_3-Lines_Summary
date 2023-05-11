@@ -1,4 +1,4 @@
-package com.all3linesummary.summary.dto;
+package com.all3linesummary.naverAPIs.summary.dto;
 
 import lombok.ToString;
 

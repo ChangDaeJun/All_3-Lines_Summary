@@ -1,7 +1,7 @@
-package com.all3linesummary.news.newsCollector;
+package com.all3linesummary.algorithm.selectNews;
 
-import com.all3linesummary.news.dto.NewsDTO;
-import com.all3linesummary.news.entity.News;
+import com.all3linesummary.news.dto.NewsGetResult;
+import com.all3linesummary.domain.News;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -17,30 +17,30 @@ import java.util.List;
 @Component
 public class SelectNewsImpl implements SelectNews{
     @Override
-    public List<NewsDTO> select(JSONArray collectResult) {
-        List<NewsDTO> result = new ArrayList<>();
+    public List<NewsGetResult> select(JSONArray collectResult) {
+        List<NewsGetResult> result = new ArrayList<>();
         for(Object item : collectResult){
-            NewsDTO news = getNewsByFilter((JSONObject) item);
+            NewsGetResult news = getNewsByFilter((JSONObject) item);
             if(news != null) result.add(news);
         }
         return result;
     }
 
-    private NewsDTO getNewsByFilter(JSONObject item) {
+    private NewsGetResult getNewsByFilter(JSONObject item) {
         if(checkNaverNews(item)) return null;
         if(checkKorean(item)) return null;
 
-        NewsDTO newsDTO = crawlingNews(item);
-        if(newsDTO == null) return null;
+        NewsGetResult newsGetResult = crawlingNews(item);
+        if(newsGetResult == null) return null;
 
-        int weight = getWeight(newsDTO);
+        int weight = getWeight(newsGetResult);
         if(weight == -1) return null;
-        newsDTO.setWeight(weight);
-        return newsDTO;
+        newsGetResult.setWeight(weight);
+        return newsGetResult;
     }
 
-    private int getWeight(NewsDTO newsDTO) {
-        int textLength = newsDTO.getNews().getTotalText();
+    private int getWeight(NewsGetResult newsGetResult) {
+        int textLength = newsGetResult.getNews().getTotalText();
         if(textLength < 500 || textLength >= 2000) return -1;
         else if(500 <= textLength && textLength < 650) return 1;
         else if(650 <= textLength && textLength < 800) return 2;
@@ -55,7 +55,7 @@ public class SelectNewsImpl implements SelectNews{
         return -1;
     }
 
-    private NewsDTO crawlingNews(JSONObject item){
+    private NewsGetResult crawlingNews(JSONObject item){
         String link = item.getString("link");
         String title = item.getString("title");
         Date date = new Date(System.currentTimeMillis());
@@ -65,7 +65,7 @@ public class SelectNewsImpl implements SelectNews{
         String text = content.text();
         Elements images = content.select("img");
         News news = new News(title, link, text, date);
-        return new NewsDTO(news, images);
+        return new NewsGetResult(news, images);
     }
 
 

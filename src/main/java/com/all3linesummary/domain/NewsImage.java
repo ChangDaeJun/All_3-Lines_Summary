@@ -1,4 +1,4 @@
-package com.all3linesummary.news.entity;
+package com.all3linesummary.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;

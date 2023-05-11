@@ -1,11 +1,11 @@
 package com.all3linesummary.news;
 
-import com.all3linesummary.news.dto.NewsDTO;
-import com.all3linesummary.news.entity.News;
-import com.all3linesummary.news.entity.NewsImage;
-import com.all3linesummary.news.newsCollector.CollectNews;
-import com.all3linesummary.news.newsCollector.SelectNews;
-import com.all3linesummary.summary.SummaryService;
+import com.all3linesummary.news.dto.NewsGetResult;
+import com.all3linesummary.domain.News;
+import com.all3linesummary.domain.NewsImage;
+import com.all3linesummary.naverAPIs.searchNews.CollectNewsService;
+import com.all3linesummary.algorithm.selectNews.SelectNews;
+import com.all3linesummary.naverAPIs.summary.SummaryService;
 import lombok.AllArgsConstructor;
 import org.json.JSONArray;
 import org.springframework.stereotype.Component;
@@ -19,38 +19,38 @@ import java.util.PriorityQueue;
 public class CollectTodayNewsSchedule {
     private final NewsImageRepository newsImageRepository;
     private final NewsRepository newsRepository;
-    private final CollectNews collectNews;
+    private final CollectNewsService collectNewsService;
     private final SelectNews selectNews;
     private final SummaryService summaryService;
 
     public void collect(){
-        PriorityQueue<NewsDTO> newsRanking = new PriorityQueue<>(new Comparator<NewsDTO>() {
+        PriorityQueue<NewsGetResult> newsRanking = new PriorityQueue<>(new Comparator<NewsGetResult>() {
             @Override
-            public int compare(NewsDTO o1, NewsDTO o2) {
+            public int compare(NewsGetResult o1, NewsGetResult o2) {
                 return o1.getWeight() - o2.getWeight();
             }
         });
 
         for(int i = 1; i <= 1; i++){
-            JSONArray news = collectNews.get(100, i);
-            List<NewsDTO> selectedNews = selectNews.select(news);
-            for(NewsDTO newsDTO : selectedNews){
-                newsRanking.add(newsDTO);
+            JSONArray news = collectNewsService.get(100, i);
+            List<NewsGetResult> selectedNews = selectNews.select(news);
+            for(NewsGetResult newsGetResult : selectedNews){
+                newsRanking.add(newsGetResult);
             }
         }
 
         int min = Math.min(newsRanking.size(), 1000);
         for(int i = 0; i < min; i++){
-            NewsDTO news = newsRanking.poll();
+            NewsGetResult news = newsRanking.poll();
             String summary = "";//summaryService.summary(news.getNews().getTitle(), news.getNews().getText());
             news.getNews().setSummary(summary);
             saveNews(news);
         }
     }
 
-    private void saveNews(NewsDTO newsDTO){
-        News news = newsDTO.getNews();
-        List<String> images = newsDTO.getImages();
+    private void saveNews(NewsGetResult newsGetResult){
+        News news = newsGetResult.getNews();
+        List<String> images = newsGetResult.getImages();
         newsRepository.save(news);
 
         Long newsId = news.getId();
