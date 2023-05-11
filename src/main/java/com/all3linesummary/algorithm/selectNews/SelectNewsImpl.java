@@ -1,6 +1,6 @@
 package com.all3linesummary.algorithm.selectNews;
 
-import com.all3linesummary.news.dto.NewsGetResult;
+import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
 import com.all3linesummary.domain.News;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,12 +35,12 @@ public class SelectNewsImpl implements SelectNews{
 
         int weight = getWeight(newsGetResult);
         if(weight == -1) return null;
-        newsGetResult.setWeight(weight);
+        //newsGetResult.setWeight(weight);
         return newsGetResult;
     }
 
     private int getWeight(NewsGetResult newsGetResult) {
-        int textLength = newsGetResult.getNews().getTotalText();
+        int textLength = 0;//newsGetResult.getNews().getTotalText();
         if(textLength < 500 || textLength >= 2000) return -1;
         else if(500 <= textLength && textLength < 650) return 1;
         else if(650 <= textLength && textLength < 800) return 2;
@@ -65,7 +65,7 @@ public class SelectNewsImpl implements SelectNews{
         String text = content.text();
         Elements images = content.select("img");
         News news = new News(title, link, text, date);
-        return new NewsGetResult(news, images);
+        return null;//new NewsGetResult(news, images);
     }
 
 

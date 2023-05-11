@@ -1,5 +1,6 @@
 package com.all3linesummary.naverAPIs.searchNews;
 
+import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +14,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class SearchNewsServiceImpl implements SearchNewsService {
@@ -23,12 +26,22 @@ public class SearchNewsServiceImpl implements SearchNewsService {
     @Value("${naver.api.secret}")
     private String secret;
     @Override
-    public JSONArray get(int display, int start) {
+    public List<NewsGetResult> get(int display, int start) {
         String parameter = getParameter("뉴스", display, start, "date");
-        JSONObject result = GET(url, "", parameter, id, secret);
-        return result.getJSONArray("items");
-    }
 
+        JSONObject result = GET(url, "", parameter, id, secret);
+
+        JSONArray newsArray = result.getJSONArray("items");
+        return changeJsonToNewsGetResult(newsArray);
+    }
+    private List<NewsGetResult> changeJsonToNewsGetResult(JSONArray array){
+        List<NewsGetResult> list = new ArrayList<>();
+        for(Object item : array){
+            NewsGetResult news = new NewsGetResult((JSONObject) item);
+            list.add(news);
+        }
+        return list;
+    }
     private String getParameter(String query, int display, int start, String sort){
         String parameter;
         try {

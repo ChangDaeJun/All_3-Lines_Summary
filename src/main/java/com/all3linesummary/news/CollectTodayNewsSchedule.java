@@ -1,6 +1,6 @@
 package com.all3linesummary.news;
 
-import com.all3linesummary.news.dto.NewsGetResult;
+import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
 import com.all3linesummary.domain.News;
 import com.all3linesummary.domain.NewsImage;
 import com.all3linesummary.naverAPIs.searchNews.SearchNewsService;
@@ -27,12 +27,12 @@ public class CollectTodayNewsSchedule {
         PriorityQueue<NewsGetResult> newsRanking = new PriorityQueue<>(new Comparator<NewsGetResult>() {
             @Override
             public int compare(NewsGetResult o1, NewsGetResult o2) {
-                return o1.getWeight() - o2.getWeight();
+                return 0;//o1.getWeight() - o2.getWeight();
             }
         });
 
         for(int i = 1; i <= 1; i++){
-            JSONArray news = searchNewsService.get(100, i);
+            JSONArray news = null;//searchNewsService.get(100, i);
             List<NewsGetResult> selectedNews = selectNews.select(news);
             for(NewsGetResult newsGetResult : selectedNews){
                 newsRanking.add(newsGetResult);
@@ -43,14 +43,14 @@ public class CollectTodayNewsSchedule {
         for(int i = 0; i < min; i++){
             NewsGetResult news = newsRanking.poll();
             String summary = "";//summaryService.summary(news.getNews().getTitle(), news.getNews().getText());
-            news.getNews().setSummary(summary);
+            //news.getNews().setSummary(summary);
             saveNews(news);
         }
     }
 
     private void saveNews(NewsGetResult newsGetResult){
-        News news = newsGetResult.getNews();
-        List<String> images = newsGetResult.getImages();
+        News news = null;//newsGetResult.getNews();
+        List<String> images = null;//newsGetResult.getImages();
         newsRepository.save(news);
 
         Long newsId = news.getId();
