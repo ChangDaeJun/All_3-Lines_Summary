@@ -1,4 +1,4 @@
-package com.all3linesummary.summary;
+package com.all3linesummary.naverAPIs.summary;
 
 import com.all3linesummary.naverAPIs.summary.SummaryService;
 import com.all3linesummary.naverAPIs.summary.dto.Document;
