@@ -4,9 +4,10 @@ import com.all3linesummary.news.dto.NewsDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SummaryNewsImpl implements SummaryNews{
+public class SummaryNewsImpl implements SummaryService {
+
     @Override
-    public NewsDTO summary(NewsDTO newsDTO) {
+    public String summary(String title, String text) {
         return null;
     }
 }

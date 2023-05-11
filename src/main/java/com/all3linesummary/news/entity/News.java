@@ -1,8 +1,6 @@
 package com.all3linesummary.news.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class News {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -24,10 +22,10 @@ public class News {
     @Column
     private Date date;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String summary;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String text;
 
     public News(String title, String URL, String text, Date date) {
