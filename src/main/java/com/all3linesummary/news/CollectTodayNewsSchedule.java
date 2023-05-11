@@ -33,7 +33,7 @@ public class CollectTodayNewsSchedule {
 
         for(int i = 1; i <= 1; i++){
             JSONArray news = null;//searchNewsService.get(100, i);
-            List<NewsGetResult> selectedNews = selectNews.select(news);
+            List<NewsGetResult> selectedNews = null;//selectNews.select(news);
             for(NewsGetResult newsGetResult : selectedNews){
                 newsRanking.add(newsGetResult);
             }

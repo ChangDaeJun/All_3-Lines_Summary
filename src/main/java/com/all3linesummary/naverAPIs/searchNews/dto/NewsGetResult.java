@@ -18,4 +18,16 @@ public class NewsGetResult {
         this.description = item.getString("description");
         this.pubDate = item.getString("pubDate");
     }
+
+    public String getNaverLink(){
+        return this.naverLink;
+    }
+
+    public int getTitleLength() {
+        return title.length();
+    }
+
+    public boolean isNaverNews(){
+        return !originalLink.equals(naverLink);
+    }
 }
