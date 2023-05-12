@@ -19,11 +19,11 @@ import java.util.List;
 
 @Component
 public class SearchNewsServiceImpl implements SearchNewsService {
-    @Value("${naver.api.searchAPI}")
+    @Value("${naver.api.search.url}")
     private String url;
-    @Value("${naver.api.id}")
+    @Value("${naver.api.search.id}")
     private String id;
-    @Value("${naver.api.secret}")
+    @Value("${naver.api.search.secret}")
     private String secret;
     @Override
     public List<SearchedNews> get(int display, int start) {
