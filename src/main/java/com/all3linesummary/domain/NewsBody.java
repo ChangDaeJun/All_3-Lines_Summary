@@ -3,13 +3,17 @@ package com.all3linesummary.domain;
 import com.all3linesummary.algorithm.selectNews.dto.SelectedNews;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
 @Getter
 @Setter
+@ToString
+@NoArgsConstructor
 public class NewsBody {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

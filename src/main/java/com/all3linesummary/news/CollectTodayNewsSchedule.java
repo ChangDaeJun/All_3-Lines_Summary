@@ -32,11 +32,12 @@ public class CollectTodayNewsSchedule {
     private final SummaryService summaryService;
     private final NewsBodyRepository newsBodyRepository;
     private final NewsImageRepository newsImageRepository;
-    private static final int REQUEST_NUMBER = 6_000;
+    private static final int REQUEST_NUMBER = 500; //6_000;
     private static final int DISPLAY_SIZE = 100;
-    private static final int MAX_SUMMARY_SIZE = 1_000;
+    private static final int MAX_SUMMARY_SIZE = 10;//1_000;
 
     @Scheduled(cron ="0 0 12 1/1 * ?")
+    @Transactional
     public void collectTodayNews(){
         List<SearchedNews> todaySearchedNewsList = requestTodayNews(REQUEST_NUMBER);
         List<SelectedNews> todaySelectedNewsList = selectNews.select(todaySearchedNewsList);
@@ -45,8 +46,7 @@ public class CollectTodayNewsSchedule {
         saveNews(todayNewsList);
     }
 
-    @Transactional
-    public void saveNews(List<News> newsList){
+    private void saveNews(List<News> newsList){
         for(News news : newsList){
             Long bodyId = saveNewsBody(news.getBody());
             saveNewsImage(news.getImageList(), bodyId);
@@ -68,8 +68,12 @@ public class CollectTodayNewsSchedule {
         List<SearchedNews> newsGetList = new ArrayList<>(number);
         int cnt = (int) Math.ceil(number / 100);
         for(int i = 1; i <= cnt; i++){
-            List<SearchedNews> searchResult = searchNewsService.get(DISPLAY_SIZE, i);
-            newsGetList.addAll(newsGetList);
+            try {
+                List<SearchedNews> searchResult = searchNewsService.get(DISPLAY_SIZE, i);
+                newsGetList.addAll(searchResult);
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
         }
         return newsGetList;
     }

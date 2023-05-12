@@ -32,9 +32,9 @@ public class SearchNewsServiceImpl implements SearchNewsService {
         JSONObject result = GET(url, "", parameter, id, secret);
 
         JSONArray newsArray = result.getJSONArray("items");
-        return changeJsonToNewsGetResult(newsArray);
+        return changeJsonToSearchedNews(newsArray);
     }
-    private List<SearchedNews> changeJsonToNewsGetResult(JSONArray array){
+    private List<SearchedNews> changeJsonToSearchedNews(JSONArray array){
         List<SearchedNews> list = new ArrayList<>();
         for(Object item : array){
             SearchedNews news = new SearchedNews((JSONObject) item);
