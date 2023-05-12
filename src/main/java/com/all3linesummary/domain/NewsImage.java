@@ -21,4 +21,12 @@ public class NewsImage {
         this.newsId = newsId;
         this.imageURL = imageURL;
     }
+
+    public NewsImage(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public void setNewsId(Long newsId) {
+        this.newsId = newsId;
+    }
 }

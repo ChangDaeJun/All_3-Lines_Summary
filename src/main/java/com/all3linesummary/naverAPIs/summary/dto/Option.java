@@ -29,4 +29,8 @@ public class Option {
         this.tone = tone;
         this.summaryCount = summaryCount;
     }
+
+    public static Option getDefaultNews(){
+        return new Option("ko", "news", 0, 3);
+    }
 }

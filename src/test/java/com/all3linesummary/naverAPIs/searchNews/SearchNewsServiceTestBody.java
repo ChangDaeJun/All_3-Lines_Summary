@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class SearchNewsServiceTest {
+class SearchNewsServiceTestBody {
 
     @Autowired
     private SearchNewsService searchNewsService;

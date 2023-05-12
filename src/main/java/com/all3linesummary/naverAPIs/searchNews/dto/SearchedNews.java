@@ -30,4 +30,8 @@ public class SearchedNews {
     public boolean isNaverNews(){
         return !originalLink.equals(naverLink);
     }
+
+    public String getTitle() {
+        return title;
+    }
 }
