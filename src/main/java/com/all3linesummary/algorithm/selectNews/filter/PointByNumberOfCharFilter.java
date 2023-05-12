@@ -1,19 +1,14 @@
 package com.all3linesummary.algorithm.selectNews.filter;
 
-import com.all3linesummary.domain.News;
-import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
+import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import com.all3linesummary.util.filter.Filter;
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
-import java.util.Date;
-
-public class PointByNumberOfCharFilter implements Filter<NewsGetResult> {
+public class PointByNumberOfCharFilter implements Filter<SearchedNews> {
     @Override
-    public int checkPoint(NewsGetResult news) {
+    public int checkPoint(SearchedNews news) {
         int contextLength = getNewsContentLength(news.getNaverLink());
         int titleLength = news.getTitleLength();
         return getPoint(contextLength + titleLength);

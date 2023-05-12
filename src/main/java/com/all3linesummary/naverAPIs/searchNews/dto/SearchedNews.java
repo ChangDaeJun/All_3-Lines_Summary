@@ -4,14 +4,14 @@ import lombok.ToString;
 import org.json.JSONObject;
 
 @ToString
-public class NewsGetResult {
+public class SearchedNews {
     private String title;
     private String originalLink;
     private String naverLink;
     private String description;
     private String pubDate;
 
-    public NewsGetResult(JSONObject item) {
+    public SearchedNews(JSONObject item) {
         this.title = item.getString("title");
         this.originalLink = item.getString("originallink");
         this.naverLink = item.getString("link");

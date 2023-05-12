@@ -1,6 +1,6 @@
 package com.all3linesummary.naverAPIs.searchNews;
 
-import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
+import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +26,7 @@ public class SearchNewsServiceImpl implements SearchNewsService {
     @Value("${naver.api.secret}")
     private String secret;
     @Override
-    public List<NewsGetResult> get(int display, int start) {
+    public List<SearchedNews> get(int display, int start) {
         String parameter = getParameter("뉴스", display, start, "date");
 
         JSONObject result = GET(url, "", parameter, id, secret);
@@ -34,10 +34,10 @@ public class SearchNewsServiceImpl implements SearchNewsService {
         JSONArray newsArray = result.getJSONArray("items");
         return changeJsonToNewsGetResult(newsArray);
     }
-    private List<NewsGetResult> changeJsonToNewsGetResult(JSONArray array){
-        List<NewsGetResult> list = new ArrayList<>();
+    private List<SearchedNews> changeJsonToNewsGetResult(JSONArray array){
+        List<SearchedNews> list = new ArrayList<>();
         for(Object item : array){
-            NewsGetResult news = new NewsGetResult((JSONObject) item);
+            SearchedNews news = new SearchedNews((JSONObject) item);
             list.add(news);
         }
         return list;

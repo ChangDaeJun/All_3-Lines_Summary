@@ -3,13 +3,13 @@ package com.all3linesummary.algorithm.selectNews;
 import com.all3linesummary.algorithm.selectNews.filter.IsKoreanNewsFilter;
 import com.all3linesummary.algorithm.selectNews.filter.IsNaverNewsFilter;
 import com.all3linesummary.algorithm.selectNews.filter.PointByNumberOfCharFilter;
-import com.all3linesummary.naverAPIs.searchNews.dto.NewsGetResult;
+import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import com.all3linesummary.util.filter.Filter;
 import com.all3linesummary.util.filter.FilterChain;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SelectNewsFilterChain implements FilterChain<NewsGetResult> {
+public class SelectNewsFilterChain implements FilterChain<SearchedNews> {
 
     public SelectNewsFilterChain() {
         filters.add(new IsNaverNewsFilter());
@@ -18,7 +18,7 @@ public class SelectNewsFilterChain implements FilterChain<NewsGetResult> {
     }
 
     @Override
-    public int checkPointChain(NewsGetResult news) {
+    public int checkPointChain(SearchedNews news) {
         int point = 0;
         for(Filter filter : filters){
             int cur = filter.checkPoint(news);
