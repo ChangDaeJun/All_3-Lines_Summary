@@ -32,11 +32,11 @@ public class CollectTodayNewsSchedule {
     private final SummaryService summaryService;
     private final NewsBodyRepository newsBodyRepository;
     private final NewsImageRepository newsImageRepository;
-    private static final int REQUEST_NUMBER = 500; //6_000;
+    private static final int REQUEST_NUMBER = 1000; //6_000;
     private static final int DISPLAY_SIZE = 100;
-    private static final int MAX_SUMMARY_SIZE = 10;//1_000;
+    private static final int MAX_SUMMARY_SIZE = 300;//1_000;
 
-    @Scheduled(cron ="0 0 12 1/1 * ?")
+    //@Scheduled(cron ="0 0 12 1/1 * ?")
     @Transactional
     public void collectTodayNews(){
         List<SearchedNews> todaySearchedNewsList = requestTodayNews(REQUEST_NUMBER);
