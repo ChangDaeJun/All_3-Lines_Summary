@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,10 +21,11 @@ public class NewsController {
     private final CollectTodayNewsSchedule collectTodayNewsSchedule;
 
     @GetMapping("/news/list")
-    public String getNewsList(@PageableDefault(size = 10)Pageable pageable){
-        Gson gson = new Gson();
+    @ResponseBody
+    public NewsResponse getNewsList(@PageableDefault(size = 10)Pageable pageable){
+        System.out.println("@@@@@@@@@"+pageable.getPageNumber());
         NewsResponse response = newsReadService.getNewsResponse(pageable);
-        return gson.toJson(response);
+        return response;
     }
 
     @GetMapping("/data")

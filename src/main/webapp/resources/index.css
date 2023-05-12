@@ -1,0 +1,101 @@
+#header{
+    width : 100%;
+    height : 200px;
+    margin-bottom : 20px;
+    text-align: center;
+}
+
+#body{
+    width : 100%;
+}
+
+#headerBox{
+    width : 840px;
+    height : 140px;
+    margin : 0 auto;
+}
+
+#headerBox > div{
+    display : inline-block;
+}
+
+#logo{
+    font-size: 40px;
+    float : left;
+    margin: 30px 20px 0px 45px;
+    font-weight: 900;
+    color: green;
+}
+
+#searchBox{
+    width : 500px;
+    height : 50px;
+    margin: 45px 0px 0px 0px;
+    background-color: white;
+    border: 6px solid green;
+}
+
+#menuBox{
+    width : 100%;
+    border-top : solid green;
+    border-bottom : solid green;
+}
+
+#menuList{
+    width : 800px;
+    height : 60px;
+    margin : 0 auto;
+}
+
+#menuList > li{
+    display : inline-block;
+    font-size: 30px;
+    padding : 10px;
+    margin : 2px;
+    float: left;
+}
+
+#content{
+    width : 840px;
+    margin : 0 auto;
+}
+
+.newsBox{
+    width : 700px;
+    margin : 20px auto;
+    border-radius: 10px;
+    padding : 20px;
+    background-color: grey;
+}
+
+.newsTitle{
+    font-size : 30px;
+    margin-bottom : 10px;
+}
+
+.imageBox{
+    margin: 10px auto;
+    text-align: center;
+}
+.imageBox > img{
+    margin: 0 auto;
+}
+
+
+.summary{
+    font-size: 20px;
+    margin: 10px;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    line-height: 35px;
+}
+
+.AImodel{
+    text-align: right;
+}
+
+#today{
+    font-size: 35px;
+    padding : 10px;
+    margin : 2px;
+}
