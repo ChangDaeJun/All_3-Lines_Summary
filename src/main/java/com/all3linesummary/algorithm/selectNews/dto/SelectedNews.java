@@ -31,4 +31,8 @@ public class SelectedNews implements Comparable<SelectedNews>{
     public String getTitle(){
         return this.news.getTitle();
     }
+
+    public String getPubDate(){
+        return this.news.getPubDate();
+    }
 }

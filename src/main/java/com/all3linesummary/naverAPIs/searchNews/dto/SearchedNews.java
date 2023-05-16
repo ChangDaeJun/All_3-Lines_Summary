@@ -34,4 +34,8 @@ public class SearchedNews {
     public String getTitle() {
         return title;
     }
+
+    public String getPubDate() {
+        return pubDate;
+    }
 }

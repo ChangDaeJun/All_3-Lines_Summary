@@ -27,16 +27,13 @@ public class NewsBody {
     @Column(columnDefinition = "TEXT")
     private String summary;
 
-
-    public NewsBody(String title, String URL, Date date, String summary, String text) {
-        this.title = title;
-        this.URL = URL;
-        this.summary = summary;
-    }
+    @Column
+    private String pubDate;
 
     public NewsBody(SelectedNews selectedNews, String summary){
         this.title = selectedNews.getTitle();
         this.URL = selectedNews.getURL();
         this.summary = summary;
+        this.pubDate = selectedNews.getPubDate();
     }
 }
