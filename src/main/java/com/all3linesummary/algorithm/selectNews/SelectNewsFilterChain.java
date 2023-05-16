@@ -9,7 +9,7 @@ import com.all3linesummary.util.filter.FilterChain;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SelectNewsFilterChain implements FilterChain<SearchedNews> {
+public class SelectNewsFilterChain extends FilterChain<SearchedNews> {
 
     public SelectNewsFilterChain() {
         filters.add(new IsNaverNewsFilter());
