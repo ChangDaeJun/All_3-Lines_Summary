@@ -10,11 +10,11 @@ import com.all3linesummary.algorithm.selectNews.SelectNews;
 import com.all3linesummary.naverAPIs.summary.SummaryService;
 import com.all3linesummary.naverAPIs.summary.dto.Document;
 import com.all3linesummary.naverAPIs.summary.dto.Option;
+import com.all3linesummary.news.repository.NewsRepository;
 import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,8 +30,7 @@ public class CollectTodayNewsSchedule {
     private final SearchNewsService searchNewsService;
     private final SelectNews selectNews;
     private final SummaryService summaryService;
-    private final NewsBodyRepository newsBodyRepository;
-    private final NewsImageRepository newsImageRepository;
+    private final NewsRepository newsRepository;
     private static final int REQUEST_NUMBER = 1000; //6_000;
     private static final int DISPLAY_SIZE = 100;
     private static final int MAX_SUMMARY_SIZE = 300;//1_000;
@@ -48,19 +47,7 @@ public class CollectTodayNewsSchedule {
 
     private void saveNews(List<News> newsList){
         for(News news : newsList){
-            Long bodyId = saveNewsBody(news.getBody());
-            saveNewsImage(news.getImageList(), bodyId);
-        }
-    }
-    private Long saveNewsBody(NewsBody body){
-        newsBodyRepository.save(body);
-        return body.getId();
-    }
-
-    private void saveNewsImage(List<NewsImage> imageList, Long bodyId){
-        for(NewsImage image : imageList){
-            image.setNewsId(bodyId);
-            newsImageRepository.save(image);
+            newsRepository.save(news);
         }
     }
 

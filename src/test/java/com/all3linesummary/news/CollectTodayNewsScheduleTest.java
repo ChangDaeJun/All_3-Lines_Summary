@@ -1,13 +1,12 @@
 package com.all3linesummary.news;
 
 import com.all3linesummary.domain.NewsBody;
+import com.all3linesummary.news.repository.NewsBodyRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class CollectTodayNewsScheduleTest {
