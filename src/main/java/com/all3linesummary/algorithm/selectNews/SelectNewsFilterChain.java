@@ -8,13 +8,15 @@ import com.all3linesummary.util.filter.Filter;
 import com.all3linesummary.util.filter.FilterChain;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.List;
+
+
 public class SelectNewsFilterChain extends FilterChain<SearchedNews> {
 
-    public SelectNewsFilterChain() {
-        filters.add(new IsNaverNewsFilter());
-        filters.add(new IsKoreanNewsFilter());
-        filters.add(new PointByNumberOfCharFilter());
+    public SelectNewsFilterChain(List<Filter<SearchedNews>> filterList) {
+        for(Filter<SearchedNews> filter : filterList){
+            filters.add(filter);
+        }
     }
 
     @Override
