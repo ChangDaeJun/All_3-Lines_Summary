@@ -1,6 +1,6 @@
-package com.all3linesummary.algorithm.selectNews;
+package com.all3linesummary.core.selectNews;
 
-import com.all3linesummary.algorithm.selectNews.dto.SelectedNews;
+import com.all3linesummary.core.selectNews.dto.SelectedNews;
 import com.all3linesummary.naverAPIs.searchNews.SearchNewsService;
 import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import org.junit.jupiter.api.Test;

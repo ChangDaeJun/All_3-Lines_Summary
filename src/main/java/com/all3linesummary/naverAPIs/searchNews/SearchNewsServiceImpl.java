@@ -89,4 +89,18 @@ public class SearchNewsServiceImpl implements SearchNewsService {
 
         return responseJson;
     }
+
+    public List<SearchedNews> requestTodayNews(int size, int number){
+        List<SearchedNews> newsGetList = new ArrayList<>(number);
+        int cnt = (int) Math.ceil(number / 100);
+        for(int i = 1; i <= cnt; i++){
+            try {
+                List<SearchedNews> searchResult = get(size, i);
+                newsGetList.addAll(searchResult);
+            }catch (NullPointerException e){
+                e.printStackTrace();
+            }
+        }
+        return newsGetList;
+    }
 }
