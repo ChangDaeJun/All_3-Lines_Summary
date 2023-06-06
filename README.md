@@ -43,5 +43,20 @@
 * SearchNewsService는 Item을 받아 SearchedNews 클래스로 변환
 
  ### News 요약 서비스
- 
- 
+ * api 비용 조사
+
+|API 이름|하루 사용|한달 사용|비용|
+|---|---|---|---|
+|Naver Search API|60|1,800| - |
+|Naer CLOVA Summary API|6,000|180,000|358,000|
+|전체| 6,060|181,800|358,000|
+
+* 하루에 평균 6천건의 뉴스가 작성되고, 이를 모두 요약할 경우 약 358,000원의 비용이 발생.
+* 비용 감소를 위해, 뉴스 분류 알고리즘을 만든 뒤 가장 점수가 높은 1,000개의 뉴스만 요약하기로 결정
+![스크린샷 2023-06-06 오후 5 43 39](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/a58eb33d-f404-4f3d-abb8-17e66f3af776)
+
+
+* 뉴스 요약 서비스 전체 흐름
+![스크린샷 2023-06-06 오후 5 51 56](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/5fdfd3ac-ba94-4ca9-8c25-855d0cb44b60)
+
+
