@@ -1,9 +1,7 @@
-package com.all3linesummary.algorithm.selectNews.dto;
+package com.all3linesummary.core.selectNews.dto;
 
 import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import lombok.ToString;
-
-import java.util.Comparator;
 
 @ToString
 public class SelectedNews implements Comparable<SelectedNews>{

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SearchNewsService {
     List<SearchedNews> get(int display, int start);
+    List<SearchedNews> requestTodayNews(int size, int number);
 }

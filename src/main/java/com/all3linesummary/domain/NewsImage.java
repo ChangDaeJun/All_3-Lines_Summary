@@ -1,9 +1,13 @@
 package com.all3linesummary.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.util.List;
 
 @Entity
 @Setter
@@ -11,24 +15,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class NewsImage {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
-    @Column
-    private Long newsId;
+    @ManyToOne
+    @JsonIgnore
+    private News news;
 
     @Column
     private String imageURL;
 
-    public NewsImage(Long newsId, String imageURL) {
-        this.newsId = newsId;
+    public NewsImage(News news, String imageURL) {
+        this.news = news;
         this.imageURL = imageURL;
-    }
-
-    public NewsImage(String imageURL) {
-        this.imageURL = imageURL;
-    }
-
-    public void setNewsId(Long newsId) {
-        this.newsId = newsId;
     }
 }

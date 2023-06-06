@@ -1,13 +1,11 @@
-package com.all3linesummary.algorithm.selectNews;
+package com.all3linesummary.core.selectNews;
 
-import com.all3linesummary.algorithm.selectNews.dto.SelectedNews;
-import com.all3linesummary.algorithm.selectNews.filter.IsKoreanNewsFilter;
-import com.all3linesummary.algorithm.selectNews.filter.IsNaverNewsFilter;
-import com.all3linesummary.algorithm.selectNews.filter.PointByNumberOfCharFilter;
+import com.all3linesummary.core.selectNews.dto.SelectedNews;
+import com.all3linesummary.core.selectNews.filter.IsKoreanNewsFilter;
+import com.all3linesummary.core.selectNews.filter.IsNaverNewsFilter;
+import com.all3linesummary.core.selectNews.filter.PointByNumberOfCharFilter;
 import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import com.all3linesummary.util.filter.Filter;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

@@ -15,10 +15,12 @@ class SearchNewsReadServiceTestBody {
 
     @Test
     public void 뉴스_검색(){
-        List<SearchedNews> list = searchNewsService.get(10, 1);
-        System.out.println(list.size());
-        for(SearchedNews news : list){
-            System.out.println(news.toString());
+        for(int i = 1; i < 100; i+= 10){
+            List<SearchedNews> list = searchNewsService.get(10, i);
+            System.out.println(list.size());
+            for(SearchedNews news : list){
+                System.out.println(news.toString());
+            }
         }
     }
 }

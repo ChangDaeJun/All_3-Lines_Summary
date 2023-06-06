@@ -1,4 +1,4 @@
-package com.all3linesummary.algorithm.selectNews.filter;
+package com.all3linesummary.core.selectNews.filter;
 
 import com.all3linesummary.naverAPIs.searchNews.dto.SearchedNews;
 import com.all3linesummary.util.filter.Filter;

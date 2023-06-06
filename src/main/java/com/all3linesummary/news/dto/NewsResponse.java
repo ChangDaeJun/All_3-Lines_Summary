@@ -2,8 +2,6 @@ package com.all3linesummary.news.dto;
 
 import com.all3linesummary.domain.News;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.util.List;
 
