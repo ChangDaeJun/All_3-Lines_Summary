@@ -92,10 +92,10 @@ public class SearchNewsServiceImpl implements SearchNewsService {
 
     public List<SearchedNews> requestTodayNews(int size, int number){
         List<SearchedNews> newsGetList = new ArrayList<>(number);
-        int cnt = (int) Math.ceil(number / 100);
-        for(int i = 1; i <= cnt; i++){
+
+        for(int cnt = 1; cnt <= number; cnt += size){
             try {
-                List<SearchedNews> searchResult = get(size, i);
+                List<SearchedNews> searchResult = get(size, cnt);
                 newsGetList.addAll(searchResult);
             }catch (NullPointerException e){
                 e.printStackTrace();

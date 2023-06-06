@@ -30,7 +30,7 @@ public class News {
     @Column
     private String pubDate;
 
-    @OneToMany(mappedBy = "news")
+    @OneToMany(mappedBy = "news", cascade = CascadeType.REMOVE)
     private List<NewsImage> images;
 
     public News(SelectedNews selectedNews, String summary){
