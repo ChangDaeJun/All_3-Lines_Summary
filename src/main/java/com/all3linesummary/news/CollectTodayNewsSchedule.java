@@ -32,9 +32,9 @@ public class CollectTodayNewsSchedule {
     private final SummaryService summaryService;
     private final NewsRepository newsRepository;
     private final NewsImageRepository newsImageRepository;
-    private static final int REQUEST_NUMBER = 1000; //6_000;
+    private static final int REQUEST_NUMBER = 2000; //6_000;
     private static final int DISPLAY_SIZE = 100;
-    private static final int MAX_SUMMARY_SIZE = 50;//1_000;
+    private static final int MAX_SUMMARY_SIZE = 100;//1_000;
 
     //@Scheduled(cron ="0 0 12 1/1 * ?")
     @Transactional

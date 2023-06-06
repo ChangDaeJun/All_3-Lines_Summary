@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 public class NewsController {
-    //private final NewsReadService newsReadService;
+    private final NewsService newsService;
     private final CollectTodayNewsSchedule collectTodayNewsSchedule;
 
-    //@GetMapping("/news/list")
-    //@ResponseBody
-    //public NewsResponse getNewsList(@PageableDefault(size = 10)Pageable pageable){
-    //    NewsResponse response = newsReadService.getNewsResponse(pageable);
-    //    return response;
-    //}
+    @GetMapping("/news/list")
+    @ResponseBody
+    public NewsResponse getNewsList(@PageableDefault(size = 10)Pageable pageable){
+        NewsResponse response = newsService.getNews(pageable);
+        return response;
+    }
 
     @GetMapping("/data")
     public String test(){

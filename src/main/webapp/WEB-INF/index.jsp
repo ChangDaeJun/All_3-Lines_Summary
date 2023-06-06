@@ -36,20 +36,20 @@
     var cur = 0;
     $(document).ready(function() {
         $.ajax({
-            url: '/news/list?page=1',
+            url: '/news/list?page=0',
             method: 'GET',
             success: function(response) {
                 total = response.total;
                 cur += 1;
                 var newsList = response.newsList;
                 for (var i = 0; i < 10; i++) {
-                    var body = newsList[i].body;
-                    var images = newsList[i].imageList;
+                    var body = newsList[i];
+                    var images = newsList[i].images;
                     var title = body.title;
-                    var URL = body.URL;
+                    var URL = body.url;
                     var summary = body.summary;
                     var imageURL = "";
-                    if(images.length > 0){
+                    if(images != null){
                         imageURL = images[0].imageURL;
                     }
 
@@ -71,8 +71,8 @@
     $(document).ready(function() {
         $(window).scroll(function() {
             if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
-                cur += 1;
                 loadMoreContent();
+                cur += 1;
             }
         });
 
@@ -83,13 +83,13 @@
                 success: function(response) {
                     var newsList = response.newsList;
                     for (var i = 0; i < 10; i++) {
-                        var body = newsList[i].body;
-                        var images = newsList[i].imageList;
+                        var body = newsList[i];
+                        var images = newsList[i].images;
                         var title = body.title;
-                        var URL = body.URL;
+                        var URL = body.url;
                         var summary = body.summary;
                         var imageURL = "";
-                        if(images.length > 0){
+                        if(images != null){
                             imageURL = images[0].imageURL;
                         }
 

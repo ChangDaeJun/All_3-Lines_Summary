@@ -1,6 +1,7 @@
 package com.all3linesummary.domain;
 
 import com.all3linesummary.core.selectNews.dto.SelectedNews;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 public class News {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NEWS_ID")
+    @JsonIgnore
     private Long id;
 
     @Column
