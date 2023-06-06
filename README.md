@@ -31,9 +31,17 @@
  ## 구현 사항
  
  ### Naver Summary
- 
+ ![스크린샷 2023-06-06 오후 5 24 10](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/3144fbc4-951d-44ab-b490-a8b9b585a895)
+* Naver CLOVA Summary API 요청사항에 맞춰 제작
+* Document: 요약할 본문과 제목을 담는 클래스
+* Option: 요약에 필요한 정보를 담는 클래스(언어, 모델, 문장 수 등)
+* SummaryService의 summary 메서드를 통해 프로젝트 전체에서 자유롭게 요약 서비스를 사용 가능
+
  ### Naver News 검색
- 
+ ![스크린샷 2023-06-06 오후 5 35 18](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/d651f483-98b7-4b4c-b4a0-b922cc737963)
+* Naver Search API 요청사항에 맞춰 제작
+* SearchNewsService는 Item을 받아 SearchedNews 클래스로 변환
+
  ### News 요약 서비스
  
  
