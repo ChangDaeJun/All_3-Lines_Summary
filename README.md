@@ -2,6 +2,9 @@
 
 텍스트 정보(뉴스, 포스트, 검색 결과 등)를 3줄로 요약해주는 서비스
 
+</br>
+</br>
+
 ## 개요
 
  최근 컨텐츠 업계의 가장 큰 이슈는 숏 컨텐츠입니다. 숏 컨텐츠는 1분 미만의 짧은 영상으로 틱톡을 선두로 유튜브, 인스타, 네이버 등 다양한 컨텐츠 플렛폼 업채가 도입하고 있습니다. 이런 숏 컨텐츠는 인기에는 여러 요인이 있지만, 다음과 같은 이유를 생각해볼 수 있습니다.
@@ -14,7 +17,8 @@
 
  결과적으로, 숏 컨텐츠는 시간, 기술, 사회적 변화 등 다양한 요소에 따라 인기를 얻었으며, 이러한 추세는 앞으로도 계속될 것으로 예상됩니다.
  이렇게 숏 컨텐츠는 매우 사랑 받는 정보 전달 방식이지만, 대부분의 숏 컨텐츠는 영상을 기반으로 합니다. 아직까지 텍스트나 포스트, 뉴스, 검색에 대한 숏 컨텐츠를 제공하는 서비스가 없습니다. 저는 텍스트 기반의 숏 컨텐츠 제공을 위해 기존의 데이터를 요약하여 사용자에게 보여줄 수 있는 프로젝트를 만들었습니다.
- 
+ </br>
+ </br>
  
  ## 사용 기술
  |종류|이름|
@@ -25,11 +29,18 @@
  |라이브러리|Lombok, JUnit5, Jsoup|
  |APIs|NCP(Naver Cloud Platform) CLOVA Summary, Naver Developers Search|
  
+ </br>
+ </br>
+ 
  ## 화면
  ![스크린샷 2023-06-06 오후 5 03 28](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/7c41411b-c347-45fd-870d-605130f7d531)
 
+</br>
+</br>
+
  ## 구현 사항
- 
+</br>
+
  ### Naver Summary
  ![스크린샷 2023-06-06 오후 5 24 10](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/3144fbc4-951d-44ab-b490-a8b9b585a895)
 * Naver CLOVA Summary API 요청사항에 맞춰 제작
@@ -37,13 +48,21 @@
 * Option: 요약에 필요한 정보를 담는 클래스(언어, 모델, 문장 수 등)
 * SummaryService의 summary 메서드를 통해 프로젝트 전체에서 자유롭게 요약 서비스를 사용 가능
 
+</br>
+</br>
+
  ### Naver News 검색
  ![스크린샷 2023-06-06 오후 5 35 18](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/d651f483-98b7-4b4c-b4a0-b922cc737963)
 * Naver Search API 요청사항에 맞춰 제작
 * SearchNewsService는 Item을 받아 SearchedNews 클래스로 변환
 
+</br>
+</br>
+
  ### News 요약 서비스
  * api 비용 조사
+
+</br>
 
 |API 이름|하루 사용|한달 사용|비용|
 |---|---|---|---|
@@ -51,10 +70,14 @@
 |Naer CLOVA Summary API|6,000|180,000|358,000|
 |전체| 6,060|181,800|358,000|
 
+</br>
+
 * 하루에 평균 6천건의 뉴스가 작성되고, 이를 모두 요약할 경우 약 358,000원의 비용이 발생.
 * 비용 감소를 위해, 뉴스 분류 알고리즘을 만든 뒤 가장 점수가 높은 1,000개의 뉴스만 요약하기로 결정
 ![스크린샷 2023-06-06 오후 5 43 39](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/a58eb33d-f404-4f3d-abb8-17e66f3af776)
 
+</br>
+</br>
 
 * 뉴스 요약 서비스 전체 흐름
 ![스크린샷 2023-06-06 오후 5 51 56](https://github.com/ChangDaeJun/All_3-Lines_Summary/assets/97227920/5fdfd3ac-ba94-4ca9-8c25-855d0cb44b60)
